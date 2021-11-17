@@ -18,14 +18,14 @@ class AddColumnsToVehiclesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('model_id')->references('id')->on('models');
             $table->unsignedBigInteger('model_id');
-            $table->string('location');
-            $table->string('condition');
-            $table->string('second_condition');
-            $table->string('transmission');
-            $table->string('fuel');
-            $table->string('body');
-            $table->string('mileage');
-            $table->text('description');
+            $table->string('location')->nullable();
+            $table->string('condition')->nullable();
+            $table->string('second_condition')->nullable();
+            $table->string('transmission')->nullable();
+            $table->string('fuel')->nullable();
+            $table->string('body')->nullable();
+            $table->string('mileage')->nullable();
+            $table->text('description')->nullable();
         });
     }
 
