@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
+    protected $primaryKey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +23,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'address',
+        'billing_address',
+        'phone_number',
         'email',
         'address',
         'billing_address',
@@ -45,4 +52,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function models()
+    {
+        return $this->hasMany(Model::class);
+    }
 }
