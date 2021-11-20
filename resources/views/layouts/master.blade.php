@@ -46,7 +46,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Car <em>Site</em></h2></a>
+          <a class="navbar-brand" href="index.html"><h2>Car<em>2</em>Go</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -65,6 +65,15 @@ https://templatemo.com/tm-546-sixteen-clothing
               </li>
               <li class="nav-item {{ 'contact' == request()->path() ? 'active' : '' }}">
                 <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              <li class="nav-item {{ 'contact' == request()->path() ? 'active' : '' }}">
+                @if (Route::has('login'))
+                    @auth
+
+                    @else
+                      <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                    @endauth
+                @endif
               </li>
             </ul>
           </div>
