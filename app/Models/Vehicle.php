@@ -9,24 +9,30 @@ class Vehicle extends Model
 {
     use HasFactory;
 
-    protected $table = 'vehicles';
-
-    protected $primaryKey = 'id'
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
         'price',
-        'model',
-        'availability'
+        'color',
+        'category_id',
+        'model_id',
+        'location',
+        'condition',
+        'second_condition',
+        'transmission',
+        'fuel',
+        'body',
+        'mileage',
+        'description'
     ];
 
-    public function users()
-    {
-    	return $this->belongsTo(User::class);
+    public function brand(){
+        $this->belongsTo('app\Model\Brand', 'model_id');
     }
 
+    public function category(){
+        $this->belongsTo('app\Model\Brand', 'category_id');
+    }
+
+    public function pictures(){
+        $this->hasMany('app\Model\Picture', 'vehicle_id');
+    }
 }

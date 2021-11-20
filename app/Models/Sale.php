@@ -4,28 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Sale extends Model
 {
     use HasFactory;
 
- 	protected $table = 'sales';
-
-    protected $primaryKey = 'id'
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
+        'vehicle_id',
         'date',
-        'payment_mode',
+        'payment_mode'
     ];
 
-    public function users()
-    {
-    	return $this->belongsTo(User::class);
+    public function vehicle(){
+        $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
-
 }

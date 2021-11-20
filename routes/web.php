@@ -13,6 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [\App\Http\Controllers\TemplateController::class, 'index']);
+
+Route::get('/about', [\App\Http\Controllers\TemplateController::class, 'about']);
+
+Route::get('/product', [\App\Http\Controllers\TemplateController::class, 'product']);
+
+Route::get('/contact', [\App\Http\Controllers\TemplateController::class, 'contact']);
+
+Route::get('/admin', [\App\Http\Controllers\TemplateController::class, 'adminIndex']);
+/*Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin', function(){
+	return view('layouts.admin');
+});
+
+Route::get('/dashboard', function(){
+	return view('layouts.app');
+});*/
+
+Auth::routes();
+
+/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
