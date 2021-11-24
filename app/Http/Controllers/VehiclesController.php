@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
@@ -14,6 +15,8 @@ class VehiclesController extends Controller
     public function index()
     {
         //
+        $vehicles = Vehicle::paginate(100);
+        return view('vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -24,6 +27,7 @@ class VehiclesController extends Controller
     public function create()
     {
         //
+        return view('vehicles.create');
     }
 
     /**
