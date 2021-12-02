@@ -13,7 +13,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+
+        return view('admin.user')
+            ->with('user', $user);
     }
 
     /**
@@ -34,7 +37,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::all();
+
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->billing_address = $request->input('billing_address');
+        $user->phone_number = $request->input('phone_number');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->role = $request->input('role');  
+        
     }
 
     /**
@@ -56,7 +68,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.user.edit')
+            ->with('status','User Information Added');
     }
 
     /**
@@ -68,7 +83,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->billing_address = $request->input('billing_address');
+        $user->phone_number = $request->input('phone_number');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->role = $request->input('role');  
+        
+        $user->update();
+
+        return redirect('/update')
+            ->with('status', 'User Information Updated');
     }
 
     /**

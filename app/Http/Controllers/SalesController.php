@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -13,7 +15,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        $sale = Sale::all();
+        return view('admin.sale')
+            ->with('sale', $sale);
     }
 
     /**
@@ -34,7 +38,17 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sale = new Sale;
+
+        $sale->user_id = $request->input('user_id');
+        $sale->vehicle_id = $request->input('vehicle_id');
+        $sale->date = $request->input('date');
+        $sale->payment_mode = $request->input('payment_mode');
+        
+        $sale->save();
+
+        return redirect('/sale')
+            ->with('status', 'Sales Info Added');
     }
 
     /**
@@ -56,7 +70,10 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sale = Sale::findOrFail($id);
+        return view('admin.sale.edit')
+            ->with('sale', $sale);
+
     }
 
     /**
@@ -68,7 +85,17 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sale = Sale::findOrFail($id);
+
+        $sale->user_id = $request->input('user_id');
+        $sale->vehicle_id = $request->input('vehicle_id');
+        $sale->date = $request->input('date');
+        $sale->payment_mode = $request->input('payment_mode');
+        
+        $sale->update();
+
+        return redirect('/sale')
+            ->with('status', 'Sales Info Updated');
     }
 
     /**

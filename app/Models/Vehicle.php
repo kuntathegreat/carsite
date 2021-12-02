@@ -13,6 +13,8 @@ class Vehicle extends Model
         'price',
         'color',
         'category_id',
+        'availability',
+        'user_id',
         'model_id',
         'location',
         'condition',

@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ModelController;
+use App\Http\Controllers\PictureController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehiclesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +29,22 @@ Route::get('/product', [\App\Http\Controllers\TemplateController::class, 'produc
 Route::get('/contact', [\App\Http\Controllers\TemplateController::class, 'contact']);
 
 Route::get('/admin', [\App\Http\Controllers\TemplateController::class, 'adminIndex']);
+
+Route::get('/test', [\App\Http\Controllers\VehiclesController::class, 'index']);
+
+Route::get('/vehicle', [VehiclesController::class, 'index'])->name('index');
+Route::post('/save-vehicle', [VehiclesController::class, 'store'])->name('save-vehicle');
+Route::get('/vehicle-{id}', [VehiclesController::class, 'edit'])->name('vehicle-edit');
+Route::put('/vehicle-update/{id}', [VehiclesController::class, 'update'])->name('update');
+
+Route::get('/sale', [SalesController::class, 'index'])->name('index');
+Route::post('/save-sale', [SalesController::class, 'store'])->name('save-sale');
+Route::get('/sale-{id}', [SalesController::class, 'edit'])->name('sale-edit');
+Route::put('/sale-update/{id}', [SalesController::class, 'update'])->name('update');
+
+
+
+
 /*Route::get('/', function () {
     return view('welcome');
 });
