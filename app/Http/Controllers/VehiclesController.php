@@ -15,9 +15,9 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $vehicle = Vehicle::all();
-        return view('admin.vehicle')
-            ->with('vehicle', $vehicle);
+        //
+        $vehicles = Vehicle::paginate(100);
+        return view('vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -28,6 +28,7 @@ class VehiclesController extends Controller
     public function create()
     {
         //
+        return view('vehicles.create');
     }
 
     /**
